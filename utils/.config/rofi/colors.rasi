@@ -1,0 +1,19 @@
+* {
+    /* Fuente */
+    font: " BebasNeue 13";
+
+    /* Mapeo dinámico corregido según la documentación de Noctalia */
+    /* Nota: He quitado el '#' porque el motor '.hex' ya suele incluirlo */
+    background:     #292e0fE6; 
+    background-alt: #444c1aE0;
+    foreground:     #f3f3f2;
+    
+    /* Acento y Selección */
+    selected:       #d0e467;   
+    active:         #84d959; 
+    urgent:         #fd4663;
+    
+    /* Colores de texto */
+    text:           #f3f3f2;
+    text-selected:  #232518;
+}
