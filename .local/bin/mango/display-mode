@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Nombres de las salidas (basados en tu niri msg outputs)
+LAPTOP="eDP-1"
+EXTERNAL="HDMI-A-1"
+ROFI_THEME="$HOME/.config/rofi/ScreenSelect.rasi"
+ICON_DIR="$HOME/.config/rofi/assets"
+
+# Construimos las opciones con el formato de iconos de Rofi
+opt1="Solo Laptop\0icon\x1f${ICON_DIR}/laptop.png"
+opt2="Solo Monitor\0icon\x1f${ICON_DIR}/monitor.png"
+opt3="Extender\0icon\x1f${ICON_DIR}/extend.png"
+opt4="Espejo\0icon\x1f${ICON_DIR}/mirror.png"
+
+options="${opt1}\n${opt2}\n${opt3}\n${opt4}"
+
+# Ejecutamos Rofi
+chosen=$(echo -e "$options" | rofi -dmenu -i -p "Pantalla" -theme "$ROFI_THEME" -show-icons)
+
+case $chosen in
+"Solo Laptop")
+  wlr-randr --output "$LAPTOP" --on --mode 1920x1080 --scale 1.25 --output "$EXTERNAL" --off
+  ;;
+
+"Solo Monitor")
+  wlr-randr --output "$LAPTOP" --off --output "$EXTERNAL" --on --mode 1920x1080 --scale 1.0
+  ;;
+
+"Extender")
+  # Usamos tu ancho lógico de 1536 (1920 / 1.25) para que no haya huecos
+  wlr-randr --output "$EXTERNAL" --on --mode 1920x1080 --scale 1.0 --pos 0,0 \
+    --output "$LAPTOP" --on --mode 1920x1080 --scale 1.25 --pos 1920,0
+
+  ;;
+
+"Espejo")
+  # En espejo bajamos la laptop a escala 1.0 para que coincidan perfectamente
+  wlr-randr --output "$EXTERNAL" --on --pos 0,0 --scale 1.0 \
+    --output "$LAPTOP" --on --pos 0,0 --scale 1.0
+  ;;
+*)
+  exit 0
+  ;;
+esac
+
+# Nota: Niri gestiona el fondo de pantalla y los paneles de forma distinta a i3.
+# No necesitas 'feh' ni reiniciar Polybar aquí, ya que Noctalia se ajusta
+# automáticamente al cambio de resolución de Wayland.
