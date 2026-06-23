@@ -1,0 +1,91 @@
+@import "colors.rasi"
+
+configuration {
+    modi:                        "dmenu";
+    show-icons:                  true;
+    drun-display-format:         "{name}";
+}
+
+window {
+    enabled:                     true;
+    fullscreen:                  true;
+    transparency:                "real";
+    cursor:                      "default";
+    background-color:            transparent;
+}
+
+mainbox {
+    enabled:                     true;
+    children:                    [ "listview" ];
+    background-color:            @background;
+    /* Ajusta este padding para centrar las tarjetas en tu pantalla */
+    padding:                     22% 8%; 
+}
+
+listview {
+    enabled:                     true;
+    spacing:                     40px;
+    padding:                     20px;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      horizontal;
+    fixed-height:                true;
+    fixed-columns:               false;
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element {
+    enabled:                     true;
+    /* Ancho de la tarjeta */
+    width:                       14%; 
+    orientation:                 vertical;
+    spacing:                     0px;
+    padding:                     0px;
+    border-radius:               20px;
+    cursor:                      pointer;
+    background-color:            @background;
+    text-color:                  @foreground;
+    /* Evita que la imagen se salga de los bordes redondeados */
+    // overflow:                    hidden; 
+}
+
+element-icon {
+    /* Tamaño vertical para forzar la forma de tarjeta */
+    size:                        46%;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+    padding:                     0px;
+    /* Eliminamos márgenes negativos para evitar solapamientos raros */
+    margin:                      0px; 
+    background-color:            transparent;
+    cursor:                      inherit;
+}
+
+element-text {
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    padding:                     12px;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+/* --- ESTADOS --- */
+
+element selected.normal {
+    /* Cambia el borde o el fondo al seleccionar */
+    background-color:            @selected; 
+    text-color:                  @background;
+}
+
+element-text selected {
+    text-color:                  @background;
+}
+
+/* Esto asegura que los elementos alternos no rompan la transparencia */
+element.alternate.normal {
+    background-color:            transparent;
+}

@@ -1,0 +1,97 @@
+// # Modificado para un estilo minimalista y limpio
+
+configuration {
+    show-icons:                 false;
+    sidebar-mode: false;
+}
+
+@import "colors.rasi"
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  true;
+    // width:                       80%;  /* Más estrecho para el estilo de la imagen */
+    x-offset:                    0;
+    y-offset:                    0;
+
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px;    /* Sin bordes para máxima limpieza */
+    cursor:                      "default";
+    background-color:            @background;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     30%;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px 0px 10px 0px;
+    padding:                     5px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    children:                    [ "entry" ]; /* Solo dejamos la entrada de texto */
+}
+
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      text;
+    // placeholder:                 "  Buscar...";
+    placeholder-color:           @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false; /* Sin scrollbar para que se vea más limpio */
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                false;
+    fixed-columns:               true;
+    
+    spacing:                     5px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     8px;
+    border-radius:               4px;   /* Un redondeado sutil para la selección */
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element selected.normal {
+    background-color:            @selected; /* Tu color de resalte de colors.rasi */
+    text-color:                  @background;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}

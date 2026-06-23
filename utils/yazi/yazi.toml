@@ -1,0 +1,17 @@
+[mgr]
+show_hidden = true
+
+[opener]
+view_imv = [
+    { run = 'imv-dir "$@"', detach = true, desc = "Abrir en imv" }
+]
+zathura = [
+    { run = 'zathura "$@"', detach = true, desc = "Abrir en zathura" }
+]
+
+[open]
+# Asignamos este opener a los archivos de imagen
+rules = [
+	{ mime = "image/*", use = [ "view_imv", "open" ] },
+  { mime = "application/pdf", use = [ "zathura", "open" ] }
+]

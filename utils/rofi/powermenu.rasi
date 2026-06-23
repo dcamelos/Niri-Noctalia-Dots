@@ -1,0 +1,145 @@
+/**
+ * Rofi Theme File - Adaptado para Powermenu con Mensaje
+ * Basado en el estilo de Aditya Shakya con tus colores
+ **/
+
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 false;
+    click-to-exit:              true;
+}
+
+/*****----- Global Properties -----*****/
+/* Importamos shared para mantener la consistencia de colores de tu sistema */
+@import "colors.rasi"
+// @import "~/.cache/wal/colors-rofi.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  true;
+    // width:                       70%; /* Ajustado para que el mensaje se vea bien */
+    border:                      2px solid;
+    // border-radius:               20px;
+    border-color:                @selected;
+    cursor:                      "default";
+    background-color:            @background;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    // spacing:                     20px;
+    margin:                      0px;
+    padding:                     30% 15%;
+    background-color:            transparent;
+    /* Orden: Primero el saludo, luego iconos, luego el uptime */
+    children:                    [ "inputbar", "listview", "message" ];
+}
+
+/*****----- Inputbar (Saludo) -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    children:                    [ "dummy", "prompt", "dummy"];
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+prompt {
+    enabled:                     true;
+    padding:                     10px;
+    // border-radius:               10px;
+    background-color:            @background;
+    text-color:                  @foreground;
+    font:                        "BebasNeue 48";
+}
+
+/*****----- Message (Uptime) -----*****/
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     10px;
+    // border-radius:               10px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+}
+
+textbox {
+    font:                        "BebasNeue 28";
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+/*****----- Listview (Iconos) -----*****/
+listview {
+    enabled:                     true;
+    columns:                     5;
+    lines:                       1;
+    spacing:                     50px;
+    padding:                     20px 30px;
+    cycle:                       true;
+    dynamic:                     false;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    orientation:                 vertical; /* Forzamos vertical para que el icono esté arriba */
+    spacing:                     10px;     /* Espacio entre icono y texto */
+    padding:                     35px;
+    border-radius:               20px;
+    cursor:                      pointer;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+@media(max-aspect-ratio: 1.8) {
+    element {
+        orientation:             vertical;
+    }
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+element-text {
+    font:                        "feather 68"; /* Tamaño de icono ideal */
+    enabled:                     true;
+    // vertical-align:              0.5;
+    horizontal-align:            0.5;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+element normal.active {
+    background-color: @active; /* El color de "resaltado" */
+    text-color:       @background;
+}
+element selected.active {
+    background-color: @selected; /* Cuando pasas el cursor sobre el ya seleccionado */
+    text-color:       @background;
+}
+
+element hover {
+    background-color:            @selected;
+    text-color:                  @background;
+}
