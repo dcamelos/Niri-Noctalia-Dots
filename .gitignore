@@ -1,2 +1,8 @@
 term/.config/btop/themes/noctalia.theme
 term/.config/kitty/themes/noctalia.conf
+utils/.config/rofi/colors.rasi
+utils/.config/yazi/flavors/noctalia.yazi/flavor.toml
+utils/.config/zathura/noctaliarc
+wm/.config/niri/noctalia.kdl
+wm/.config/noctalia/colors.json
+wm/.config/noctalia/plugins/todo/settings.json

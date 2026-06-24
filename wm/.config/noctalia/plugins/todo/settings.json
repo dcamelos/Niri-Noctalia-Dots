@@ -8,15 +8,6 @@
       "pageId": 0,
       "priority": "medium",
       "details": ""
-    },
-    {
-      "id": 1782023222029,
-      "text": "usar stow para dots",
-      "completed": false,
-      "createdAt": "2026-06-21T06:27:02.029Z",
-      "pageId": 0,
-      "priority": "medium",
-      "details": ""
     }
   ],
   "pages": [
@@ -26,7 +17,7 @@
     }
   ],
   "current_page_id": 0,
-  "count": 2,
+  "count": 1,
   "completedCount": 0,
   "showCompleted": true,
   "showBackground": true,
