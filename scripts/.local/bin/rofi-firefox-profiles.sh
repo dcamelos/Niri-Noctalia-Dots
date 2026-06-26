@@ -24,7 +24,7 @@ case "$Seleccion" in
   firefox --profile "$HOME/.config/mozilla/firefox/fYxUWjXE.Profile 2" -no-remote &
   ;;
 "youtube")
-  firefox --profile "$HOME/.config/mozilla/firefox/AAc56dSv.Perfil 1" -no-remote &
+  firefox --profile "$HOME/.config/mozilla/firefox/qVbwfYA8.Perfil 4" -no-remote &
   ;;
 "UNAL")
   firefox --profile "$HOME/.config/mozilla/firefox/0AbhV36m.Perfil 3" -no-remote &
